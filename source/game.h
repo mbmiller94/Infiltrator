@@ -40,7 +40,10 @@ namespace Infiltrator
 	{
 	public:
 		// Initializes the main game loop.
-		static void Run();
+		static void Run(void);
+
+		// Shows the hacking missions objective.
+		static void ShowObjective(void);
 	};
 }
 
