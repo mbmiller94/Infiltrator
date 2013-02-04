@@ -62,8 +62,7 @@ namespace Infiltrator
 
 		// Type the task description and wait for 750ms.
 		if (type_desc) {
-			TypeText(task_desc, WHITE, false, true);
-			cout << "\r";
+			TypeText(task_desc + "\r", WHITE, false, true);
 			Sleep(750);
 		}
 		
@@ -75,14 +74,14 @@ namespace Infiltrator
 		
 		if (!Strings::IsEmptyOrSpace(task_finish)) {
 			// Output the task completion message.
-			if (type_finish) {
+			if (type_finish)
 				TypeText(task_finish, WHITE, false, true);
-			} else {
+			else
 				cout << task_finish;
-			}
 
-			int desc_len = (int)task_desc.length() + 17;
-			int finish_len = (int)task_finish.length();
+			int prog_len   = 17;                                 // Task progress text length.
+			int desc_len   = (int)task_desc.length() + prog_len; // Task description length.
+			int finish_len = (int)task_finish.length();          // Task completion message length.
 
 			// Erase any text left over on the line from the previous string.
 			if (finish_len < desc_len) {
@@ -122,12 +121,13 @@ namespace Infiltrator
 				case BLUE:  attrib = FOREGROUND_BLUE;  break;
 			}
 		
+			// Set the text color.
 			SetConsoleTextAttribute(OutputHandle, attrib);
 		}
 
 		cout << text;
 	
-		// Set text attributes to default.
+		// Set text color to default.
 		if (text_color != WHITE)
 			SetConsoleTextAttribute(OutputHandle, 0x07);
 
@@ -138,6 +138,8 @@ namespace Infiltrator
 	void Console::TypeText(const string& text, Color text_color, bool new_line, bool fast)
 	{
 		string::const_iterator end = text.end();
+
+		// Character delay randomness.
 		RandRange range(fast ? -3 : -75, 40);
 
 		if (text_color != WHITE) {
@@ -149,6 +151,7 @@ namespace Infiltrator
 				case BLUE:  attrib = FOREGROUND_BLUE;  break;
 			}
 		
+			// Set text color.
 			SetConsoleTextAttribute(OutputHandle, attrib);
 		}
 
@@ -159,7 +162,7 @@ namespace Infiltrator
 			Sleep((fast ? 5 : 100) + range(NumGenerator));
 		}
 	
-		// Set text attributes to default.
+		// Set text color to default.
 		if (text_color != WHITE)
 			SetConsoleTextAttribute(OutputHandle, 0x07);
 
@@ -174,14 +177,17 @@ namespace Infiltrator
 		int color_code;
 
 		if (text_color != WHITE) {
+			// Get the ANSI escape code color.
 			switch (text_color) {
 				case RED:   color_code = 31; break;
 				case GREEN: color_code = 32; break;
 				case BLUE:  color_code = 34; break;
 			}
 
+			// Output the text with the specified color.
 			cout << "\033[1;" << color_code << "m" << text;
 		} else {
+			// Output the text with the default color.
 			cout << text;
 		}
 
@@ -193,9 +199,12 @@ namespace Infiltrator
 	{
 		int color_code;
 		string::const_iterator end = text.end();
-		random::uniform_int_distribution<> range(fast ? -3 : -75, 40);
+
+		// Character delay randomness.
+		RandRange range(fast ? -3 : -75, 40);
 
 		if (text_color != WHITE) {
+			// Get the ANSI escape code color.
 			switch (text_color) {
 				case RED:   color_code = 31; break;
 				case GREEN: color_code = 32; break;
@@ -205,8 +214,10 @@ namespace Infiltrator
 
 		for (string::const_iterator it = text.begin(); it != end; ++it) {
 			if (text_color != WHITE) {
+				// Output the text with the specified color.
 				cout << "\033[1;" << color_code << "m" << *it;
 			} else {
+				// Output the text with the default color.
 				cout << *it;
 			}
 
