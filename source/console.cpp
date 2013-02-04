@@ -50,7 +50,7 @@ namespace Infiltrator
 	}
 
 	// Displays the progress percentage of a task.
-	void Console::PerformTask(std::string task_desc, std::string task_finish,
+	void Console::PerformTask(const string& task_desc, const string& task_finish,
 		                      int randomness, int speed, bool type_desc, bool type_finish)
 	{
 		// Integral parameter ranges.
@@ -111,7 +111,7 @@ namespace Infiltrator
 	}
 
 	// Outputs the specified text with a typing effect and the given color.
-	void Console::WriteText(string text, Color text_color, bool new_line)
+	void Console::WriteText(const string& text, Color text_color, bool new_line)
 	{
 		if (text_color != WHITE) {
 			WORD attrib;
@@ -135,7 +135,7 @@ namespace Infiltrator
 	}
 
 	// Outputs the specified text with a typing effect and the given color.
-	void Console::TypeText(string text, Color text_color, bool new_line, bool fast)
+	void Console::TypeText(const string& text, Color text_color, bool new_line, bool fast)
 	{
 		string::const_iterator end = text.end();
 		RandRange range(fast ? -3 : -75, 40);
@@ -169,7 +169,7 @@ namespace Infiltrator
 #else // Mac/Unix/Linux Implementation
 
 	// Outputs the specified text with a typing effect and the given color.
-	void Console::WriteText(string text, Color text_color, bool new_line)
+	void Console::WriteText(const string& text, Color text_color, bool new_line)
 	{
 		int color_code;
 
@@ -189,7 +189,7 @@ namespace Infiltrator
 	}
 
 	// Outputs the specified text with a typing effect and the given color.
-	void Console::TypeText(string text, Color text_color, bool new_line, bool fast)
+	void Console::TypeText(const string& text, Color text_color, bool new_line, bool fast)
 	{
 		int color_code;
 		string::const_iterator end = text.end();
