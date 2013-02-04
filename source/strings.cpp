@@ -28,6 +28,8 @@
  */
 
 #include "strings.h"
+
+#include <ctype.h>
 #include <algorithm>
 
 namespace Infiltrator
@@ -44,6 +46,19 @@ namespace Infiltrator
 		void ToUpper(std::string& text)
 		{
 			std::transform(text.begin(), text.end(), text.begin(), ::toupper);
+		}
+
+		// Checks if a string is empty or whitespace.
+		bool IsEmptyOrSpace(const std::string& text)
+		{
+			std::string::const_iterator it = text.begin();
+
+			do {
+				if (it == text.end())
+					return true;
+			} while (*it >= 0 && *it <= 0x7F && isspace(*(it++)));
+
+			return false;
 		}
 	}
 }

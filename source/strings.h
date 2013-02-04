@@ -43,6 +43,9 @@ namespace Infiltrator
 
 		// Converts a string to all uppercase letters.
 		void ToUpper(std::string& text);
+
+		// Checks if a string is empty or whitespace.
+		bool IsEmptyOrSpace(const std::string& text);
 	}
 }
 
