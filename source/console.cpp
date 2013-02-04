@@ -28,6 +28,8 @@
  */
 
 #include "console.h"
+#include "strings.h"
+
 #include <boost/thread/thread.hpp>
 
 // For platform-dependent methods.
@@ -45,6 +47,53 @@ namespace Infiltrator
 	void Console::Sleep(long milliseconds)
 	{
 		this_thread::sleep(posix_time::milliseconds(milliseconds));
+	}
+
+	// Displays the progress percentage of a task.
+	void Console::PerformTask(std::string task_desc, std::string task_finish,
+		                      int randomness, int speed, bool type_desc, bool type_finish)
+	{
+		// Integral parameter ranges.
+		randomness = abs(randomness);
+		randomness = max(randomness, 1);
+		speed      = max(speed, randomness + 1);
+
+		RandRange range(-randomness, randomness);
+
+		// Type the task description and wait for 750ms.
+		if (type_desc) {
+			TypeText(task_desc, WHITE, false, true);
+			cout << "\r";
+			Sleep(750);
+		}
+		
+		// Output the task progress.
+		for (int i = 0; i <= 100; i++) {
+			cout << task_desc << " (Progress: " << i << "%)\r";
+			Sleep(speed + range(NumGenerator));
+		}
+		
+		if (!Strings::IsEmptyOrSpace(task_finish)) {
+			// Output the task completion message.
+			if (type_finish) {
+				TypeText(task_finish, WHITE, false, true);
+			} else {
+				cout << task_finish;
+			}
+
+			int desc_len = (int)task_desc.length() + 17;
+			int finish_len = (int)task_finish.length();
+
+			// Erase any text left over on the line from the previous string.
+			if (finish_len < desc_len) {
+				int space_count = desc_len - finish_len;
+				
+				for (int i = 0; i < space_count; i++)
+					cout << " ";
+			}
+		}
+		
+		cout << endl;
 	}
 
 #if defined(_WIN32) || defined(_WIN64) // Windows Implementation

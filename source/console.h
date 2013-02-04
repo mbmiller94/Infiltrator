@@ -51,6 +51,10 @@ namespace Infiltrator
 	public:
 		// Pauses execution for the specified interval.
 		static void Sleep(long milliseconds);
+
+		// Displays the progress percentage of a task.
+		static void PerformTask(std::string task_desc, std::string task_finish, int randomness,
+		                        int speed, bool type_desc = true, bool type_finish = true);
 		
 		// Outputs the specified text with the given color.
 		static void WriteText(std::string text, Color text_color = WHITE, bool new_line = true);
