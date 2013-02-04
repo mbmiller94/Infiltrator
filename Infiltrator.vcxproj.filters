@@ -44,5 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="license.txt" />
+    <None Include="readme.txt" />
   </ItemGroup>
 </Project>
