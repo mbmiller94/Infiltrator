@@ -11,9 +11,9 @@ For the license terms, see 'license.txt'.
 You are a hacker for hire. Your current client, Evan Smith, has set up
 a bank account under an alias. He has hired you to hack into the banks
 mainframe and funnel money from an account into the dummy account.
-The bank is a private bank that is tightly secured, all network
-connections are heavily encrypted, and the accounts strictly guarded.
-You both stand to make millions.
+
+The bank is privately owned meaning more security, heavily encrypted network
+connections, and strictly guarded accounts. You both stand to make millions.
 
 ### Build
 
