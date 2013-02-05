@@ -34,23 +34,22 @@ using namespace std;
 
 namespace Infiltrator
 {
-	// Initializes the main game loop.
-	void Game::Run(void)
-	{
-		ShowObjective();
-	}
+    // Initializes the main game loop.
+    void Game::Run(void)
+    {
+        ShowObjective();
+    }
 
-	// Shows the hacking missions objective.
-	void Game::ShowObjective(void)
-	{
-		Console::TypeText("You are a hacker for hire. Your current client, Evan Smith, has set up");
-		Console::TypeText("a bank account under an alias. He has hired you to hack into the banks");
-		Console::TypeText("mainframe and funnel money from an account into the dummy account.");
-		Console::Sleep(1000);
-		cout << endl;
-		Console::TypeText("The bank is a private bank that is tightly secured, all network");
-		Console::TypeText("connections are heavily encrypted, and the accounts strictly guarded.");
-		Console::TypeText("You both stand to make millions.");
-		Console::Sleep(1000);
-	}
+    // Shows the hacking mission objective.
+    void Game::ShowObjective(void)
+    {
+        Console::TypeText("You are a hacker for hire. Your current client, Evan Smith, has set up");
+        Console::TypeText("a bank account under an alias. He has hired you to hack into the banks");
+        Console::TypeText("mainframe and funnel money from an account into the dummy account.");
+        Console::Sleep(2000);
+        cout << endl;
+        Console::TypeText("The bank is privately owned meaning tight security, heavily encrypted network");
+        Console::TypeText("connections, and strictly guarded accounts. You both stand to make millions.");
+        Console::Sleep(2000);
+    }
 }
