@@ -50,16 +50,19 @@ namespace Infiltrator
         // Pauses execution for the specified interval.
         static void Sleep(long milliseconds);
         
+        // Displays an error message to the user.
+        static void Error(const std::string& message);
+
+        // Displays the progress percentage of a task.
+        static void PerformTask(const std::string& task_desc, const std::string& task_finish,
+                                int randomness, int speed, bool type_desc = true, bool type_finish = true);
+
         // Outputs the specified text with the given color.
         static void WriteText(const std::string& text, Color text_color = WHITE, bool new_line = true);
 
         // Outputs the specified text with a type-writer effect and the given color.
         static void TypeText(const std::string& text, Color text_color = WHITE,
                              bool new_line = true, bool fast = false);
-
-        // Displays the progress percentage of a task.
-        static void PerformTask(const std::string& task_desc, const std::string& task_finish,
-                                int randomness, int speed, bool type_desc = true, bool type_finish = true);
 
 #if defined(_WIN32) || defined(_WIN64)
         // Initializes the console handle.
