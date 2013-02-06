@@ -45,10 +45,14 @@ namespace Infiltrator
     {
     public:
         // Callback type for game command functions.
-        typedef boost::function<void(void)> Command;
+        typedef void (*Command)(void);
 
         // Initializes all command identifiers, callbacks, and descriptions.
         static void InitCommands(void);
+
+        // Waits for the user to input a command for processing.
+        // Returns 'false' if ProcessCommand() fails.
+        static bool WaitForCommand(void);
 
         // Processes user command input and executes the callback.
         static bool ProcessCommand(const std::string& input);
@@ -63,8 +67,14 @@ namespace Infiltrator
         static void ShowCommands(void);
 
     private:
+        // The container type for game commands and their information.
+        typedef std::map<std::string, std::pair<Command, std::string>> CommandMapType;
+
         // Stores command identifiers, callbacks, and descriptions.
-        static std::map<std::string, std::pair<Command, std::string>> CommandMap;
+        static CommandMapType CommandMap;
+
+        // Identifies what network the power shell is connected to.
+        static std::string NetworkKey;
     };
 }
 
