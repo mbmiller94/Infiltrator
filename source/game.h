@@ -27,8 +27,6 @@
  * @brief Manages the games main execution loop.
  */
 
-#pragma once
-
 #ifndef GAME_H_
 #define GAME_H_
 
