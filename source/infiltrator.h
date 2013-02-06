@@ -27,8 +27,6 @@
  * @brief Includes widely-used headers and defines globals.
  */
 
-#pragma once
-
 #ifndef INFILTRATOR_H_
 #define INFILTRATOR_H_
 
@@ -39,11 +37,11 @@
 
 namespace Infiltrator
 {
-	// Psuedo-random number Generator.
-	extern boost::random::mt19937 NumGenerator;
+    // Pseudo-random number Generator.
+    extern boost::random::mt19937 NumGenerator;
 
-	// Random number generation range type.
-	typedef boost::random::uniform_int_distribution<> RandRange;
+    // Random number generation range type.
+    typedef boost::random::uniform_int_distribution<> RandRange;
 }
 
 #endif // !INFILTRATOR_H_

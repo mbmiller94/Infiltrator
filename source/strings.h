@@ -27,8 +27,6 @@
  * @brief Various functions for string manipulation.
  */
 
-#pragma once
-
 #ifndef STRINGS_H_
 #define STRINGS_H_
 
@@ -36,17 +34,17 @@
 
 namespace Infiltrator
 {
-	namespace Strings
-	{
-		// Converts a string to all lowercase letters.
-		void ToLower(std::string& text);
+    namespace Strings
+    {
+        // Converts a string to all lowercase letters.
+        void ToLower(std::string& text);
 
-		// Converts a string to all uppercase letters.
-		void ToUpper(std::string& text);
+        // Converts a string to all uppercase letters.
+        void ToUpper(std::string& text);
 
-		// Checks if a string is empty or whitespace.
-		bool IsEmptyOrSpace(const std::string& text);
-	}
+        // Checks if a string is empty or whitespace.
+        bool IsEmptyOrSpace(const std::string& text);
+    }
 }
 
 #endif // !STRINGS_H_

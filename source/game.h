@@ -34,17 +34,38 @@
 
 #include "infiltrator.h"
 
+#include <map>
+#include <utility>
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
+
 namespace Infiltrator
 {
-	class Game
-	{
-	public:
-		// Initializes the main game loop.
-		static void Run(void);
+    class Game
+    {
+    public:
+        // Callback type for game command functions.
+        typedef boost::function<void(void)> Command;
 
-		// Shows the hacking missions objective.
-		static void ShowObjective(void);
-	};
+        // Initializes all command identifiers, callbacks, and descriptions.
+        static void InitCommands(void);
+
+        // Processes user command input and executes the callback.
+        static bool ProcessCommand(const std::string& input);
+
+        // Initializes the main game loop.
+        static void Run(void);
+
+        // Shows the hacking missions objective.
+        static void ShowObjective(void);
+
+        // Shows the game command help list.
+        static void ShowCommands(void);
+
+    private:
+        // Stores command identifiers, callbacks, and descriptions.
+        static std::map<std::string, std::pair<Command, std::string>> CommandMap;
+    };
 }
 
 #endif // !GAME_H_
