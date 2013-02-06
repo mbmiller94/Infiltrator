@@ -47,6 +47,9 @@ namespace Infiltrator
         // Callback type for game command functions.
         typedef void (*Command)(void);
 
+        // Container type for game commands and their information.
+        typedef std::map<std::string, std::pair<Command, std::string>> CommandMapType;
+
         // Initializes all command identifiers, callbacks, and descriptions.
         static void InitCommands(void);
 
@@ -67,9 +70,6 @@ namespace Infiltrator
         static void ShowCommands(void);
 
     private:
-        // The container type for game commands and their information.
-        typedef std::map<std::string, std::pair<Command, std::string>> CommandMapType;
-
         // Stores command identifiers, callbacks, and descriptions.
         static CommandMapType CommandMap;
 
